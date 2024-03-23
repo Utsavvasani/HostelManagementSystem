@@ -1,0 +1,475 @@
+{%load static%}
+{%include 'header.html'%}
+<!-- #header -->
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>	
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-between">
+						<div class="banner-content col-lg-9 col-md-12">
+							<h1 class="text-uppercase">						
+								From society erection 
+								to nation erection		
+							</h1>
+							<br>
+							<ul class="nav-menu">
+								<li class="menu-has-children"><button class="primary-btn " style="border-radius: 20px;"data-bs-toggle="modal" data-bs-target="#staticBackdrop">Student Registration</button>
+								  <ul style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));color:#f7631b;">
+									<!--<li><button class="primary-btn " style="border-radius: 20px;"data-bs-toggle="modal" data-bs-target="#staticBackdrop">Fresh Admission</button><br><br></li>
+									<li><button class="primary-btn " style="border-radius: 20px;"data-bs-toggle="modal" data-bs-target="#Renewal">Renewal Admission</button></li>-->
+								  </ul>
+								</li>
+							</ul>
+							
+							<!--Renewal-->
+							<div class="modal fade" id="Renewal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div class="modal-dialog">
+								  <div class="modal-content">
+									<div class="modal-header">
+									  <h5 class="modal-title" id="staticBackdropLabel">Registration Form:</h5>
+									  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+									  <form method = "post" action="/check/" enctype="multipart/form-data">
+										{% csrf_token %}							
+									  	<div class="col-md-10">
+										<label for="validationCustom03" class="form-label">Enter Hostel Username:</label>
+									   <input type="textarea" class="form-control" id="number" name="number"  required>
+								       </div>
+									</div>
+									<div class="modal-footer">
+									  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									  <input type="submit" class="btn btn-success"></input>
+									</form>
+									</div>
+								  </div>
+								</div>
+							  </div>
+						</div>	
+						    <!--freash-->
+							<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div class="modal-dialog">
+								  <div class="modal-content">
+									<div class="modal-header">
+									  <h5 class="modal-title" id="staticBackdropLabel">Registration Form:</h5>
+									  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+									  <form method = "post" action="/hostel_reg/" enctype="multipart/form-data">
+										{% csrf_token %}
+										
+										<div class="col-md-10">
+										  <label for="validationCustom03" class="form-label">First Name</label>
+										  <input type="textarea" class="form-control" id="first" name="first"  required>
+										</div>
+
+										<div class="col-md-10">
+											<label for="validationCustom03" class="form-label">last Name</label>
+											<input type="textarea" class="form-control" id="last" name="last"  required>
+										  </div>
+
+										<div class="col-md-10">
+										     <label for="validationCustom03" class="form-label">Father Name</label>
+											<input type="textarea" class="form-control" id="father" name="father"  required>
+										</div>
+									   <div class="col-md-10">
+										<label for="validationCustom03" class="form-label">Date of birth:</label>
+									   <input type="date" class="form-control" id="date" name="date"  required>
+								       </div>
+									   <div class="col-md-10">
+										
+										<label for="validationCustom03" class="form-label">Mobile number:</label>
+									   <input type="number" class="form-control" id="mobile" name="mobile"  required>
+								       </div>
+
+									   <div class="col-md-10">
+										<label for="validationCustom03" class="form-label">Email id:</label>
+									   <input type="textarea" class="form-control" id="email" name="email"  required>
+								       </div>
+									   <div class="col-md-10">
+										<label for="validationCustom03" class="form-label">Address</label>
+									   <input type="textarea" class="form-control" id="address" name="address"  required>
+								   </div>
+								   <div class="col-md-10">
+									<label for="validationCustom03" class="form-label">Collage Name:</label>
+								   <input type="textarea" class="form-control" id="collage_name" name="collage_name"  required>
+							   </div>
+
+										<div class="col-md-10">
+										<label for="validationCustom03" class="form-label">Department Name:</label>
+										<input type="textarea" class="form-control" id="department_name" name="department_name"  required>
+										</div>
+									<div class="col-md-10">
+									
+										<label for="field" class="form-label">Field name:</label>
+									
+										<input type="textarea" class="form-control" id="field_name" name="field_name"  required>
+									</div>
+									   <div class="col-md-10">
+										<label for="field" class="form-label">Term:</label>
+										<select name="term">
+											<option value="1">1 sem</option>
+											<option value="2">3 sem</option>
+											<option value="3">5 sem</option>
+										</select>
+									
+									</div>
+									
+									
+									<div class="col-md-10">
+										<label for="validationCustom03" class="form-label">Upload Passport size photo</label>
+									  
+										<input type="file" class="form-control" id="image" name="image">
+									</div>
+									   </div>
+									<div class="modal-footer">
+									  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									  <input type="submit" class="btn btn-success"></input>
+									</form>
+									</div>
+								  </div>
+								</div>
+							  </div>
+						</div>										
+					</div>
+				</div>					
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start feature Area -->
+			<section class="feature-area">
+				<div class="container">
+					<div class="row">
+						{%for i in amenities%}
+						<div class="col-lg-4">
+							<div class="single-feature" style="background-color: rgba(0, 0, 0, 0.4);">
+								<div class="title">
+									
+									<h4>{{i.title}}</h4>
+									
+								</div>
+								<div class="desc-wrap">
+									<p>{{i.description}}</p>
+									<a href="/menu">Join Now</a>									
+								</div>
+							</div>
+						</div>
+						{%endfor%}												
+					</div>
+				</div>	
+			</section>
+			<!-- End feature Area -->
+					
+			<!-- Start popular-course Area -->
+			<section class="popular-course-area section-gap">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Popular Courses we offer</h1>
+								<p>There is a moment in the life of any aspiring.</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+						<div class="active-popular-carusel">
+							{%for i in course%}
+							<div class="single-popular-carusel">
+								<div class="thumb-wrap relative">
+									<div class="thumb relative">
+										<div class="overlay overlay-bg"></div>	
+										<img class="img-fluid" src="{{i.image.url}}" style="heigth:30Opx;width:300px;" alt="">
+									</div>
+									<div class="meta d-flex justify-content-between">
+										<p><span class="lnr lnr-users"></span>{{i.number_of_enrolled}} <span class="lnr lnr-bubble"></span>{{i.number_of_message}}</p>
+										<h4>₹{{i.price}}</h4>
+									</div>									
+								</div>
+								<div class="details">
+									<a href="#">
+										<h4>
+											{{i.name}}
+										</h4>
+									</a>
+									<p>
+										{{i.description}}</p>
+								</div>
+							</div>	
+							{%endfor%}						
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End popular-course Area -->
+		
+			<!-- Start upcoming-event Area -->
+			<section class="upcoming-event-area section-gap">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Events of our Hostel</h1>
+								<p>If you are a serious astronomy fanatic like a lot of us</p>
+							</div>
+						</div>
+					</div>								
+					<div class="row">
+						
+						<div class="active-upcoming-event-carusel">
+							{%for i in event%}
+							<div class="single-carusel row align-items-center">
+								<div class="col-12 col-md-6 thumb">
+									<img class="img-fluid" src="{{i.image.url}}" alt="">
+								</div>
+								<div class="detials col-12 col-md-6">
+									<p>{{i.date}}</p>
+									<a href="#"><h4>{{i.title}}</h4></a>
+									<p>{{i.description}}</p>
+								</div>
+							</div>	
+							{%endfor%}																					
+						</div>
+						
+					</div>
+				</div>	
+			</section>
+			<!-- End upcoming-event Area -->
+						
+			<!-- Start review Area -->
+			<section class="review-area section-gap relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row">
+						<div class="active-review-carusel">
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>	
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<img src="{% static 'img/r1.png'%}" alt="">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>																												
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End review Area -->	
+			
+			<!-- Start cta-one Area -->
+			<section class="cta-one-area relative section-gap">
+				<div class="container">
+					<div class="overlay overlay-bg"></div>
+					<div class="row justify-content-center">
+						<div class="wrap">
+							<h1 class="text-white">Become an instructor</h1>
+							<p>
+								There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station whether that is on the deck.
+							</p>
+							<a class="primary-btn wh" href="#">Apply for the post</a>								
+						</div>					
+					</div>
+				</div>	
+			</section>
+			<!-- End cta-one Area -->
+
+			<!-- Start blog Area -->
+			<section class="blog-area section-gap" id="blog">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Latest posts from our Blog</h1>
+								<p>In the history of modern astronomy there is.</p>
+							</div>
+						</div>
+					</div>					
+					<div class="row">
+						<div class="col-lg-3 col-md-6 single-blog">
+							<div class="thumb">
+								<img class="img-fluid" src="{% static 'img/b1.jpg' %}" alt="">								
+							</div>
+							<p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
+							<a href="blog-single.html">
+								<h5>Addiction When Gambling Becomes A Problem</h5>
+							</a>
+							<p>
+								Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their.
+							</p>
+							<a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>		
+						</div>
+						<div class="col-lg-3 col-md-6 single-blog">
+							<div class="thumb">
+								<img class="img-fluid" src="{% static 'img/b2.jpg' %}" alt="">								
+							</div>
+							<p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
+							<a href="blog-single.html">
+								<h5>Computer Hardware Desktops And Notebooks</h5>
+							</a>
+							<p>
+								Ah, the technical interview. Nothing like it. Not only does it cause anxiety, but it causes anxiety for several different reasons. 
+							</p>
+							<a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>						
+						</div>
+						<div class="col-lg-3 col-md-6 single-blog">
+							<div class="thumb">
+								<img class="img-fluid" src="{% static 'img/b3.jpg' %}" alt="">								
+							</div>
+							<p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
+							<a href="blog-single.html">
+								<h5>Make Myspace Your Best Designed Space</h5>
+							</a>
+							<p>
+								Plantronics with its GN Netcom wireless headset creates the next generation of wireless headset and other products such as wireless.
+							</p>
+							<a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>									
+						</div>
+						<div class="col-lg-3 col-md-6 single-blog">
+							<div class="thumb">
+								<img class="img-fluid" src="{% static 'img/b4.jpg' %}" alt="">								
+							</div>
+							<p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
+							<a href="blog-single.html">
+								<h5>Video Games Playing With Imagination</h5>
+							</a>
+							<p>
+								About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about.   11% of all adult internet 
+							</p>
+							<a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>							
+						</div>							
+					</div>
+				</div>	
+			</section>
+			<!-- End blog Area -->			
+			
+
+			<!-- Start cta-two Area -->
+			<section class="cta-two-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 cta-left">
+							<h1>Not Yet Satisfied with our Trend?</h1>
+						</div>
+						<div class="col-lg-4 cta-right">
+							<a class="primary-btn wh" href="#">view our blog</a>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End cta-two Area -->
+						
+			<!-- start footer Area -->		
+			{%include "footer.html"%}

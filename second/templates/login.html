@@ -1,0 +1,137 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login & Signup Form</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">Login Form</div>
+        <div class="title signup">Signup Form</div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked>
+          <input type="radio" name="slide" id="signup">
+          <label for="login" class="slide login">Login</label>
+          <label for="signup" class="slide signup">Signup</label>
+          <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+          <!--LOGIN FORM-->
+          <form class="login" onsubmit="return logfun()">
+            <div class="field">
+              <input type="email" name="email" id="email"  value="" placeholder="Email Address" required>
+            </div>
+            <div class="field">
+              <input type="password" name="password" id="password" value="" placeholder="Password" >
+              <span id="message" style="color:red; size:5px; margin-bottom:1px;"></span>
+            </div>
+             <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+          </form>
+          <!--SIGNUP PAGE-->
+          <form class="signup"  onsubmit="return signfun()">
+            <div class="field">
+              <input type="text" placeholder="Username" id="username" name="username" value="" required>
+            </div>
+            <div class="field">
+              <input type="email" name="email" id="email" placeholder="Email Address" value="" required>
+            </div>
+            <div class="field">
+              <input type="password" name="password" id="pwd" placeholder="Password" value="" >
+              <span id="msg" style="color:red; size:5px;"></span>
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Signup">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const loginText = document.querySelector(".title-text .login");
+      const loginForm = document.querySelector("form.login");
+      const loginBtn = document.querySelector("label.login");
+      const signupBtn = document.querySelector("label.signup");
+      const signupLink = document.querySelector("form .signup-link a");
+      signupBtn.onclick = (()=>{
+        loginForm.style.marginLeft = "-50%";
+        loginText.style.marginLeft = "-50%";
+      });
+      loginBtn.onclick = (()=>{
+        loginForm.style.marginLeft = "0%";
+        loginText.style.marginLeft = "0%";
+      });
+      signupLink.onclick = (()=>{
+        signupBtn.click();
+        return false;
+      });
+    </script>
+    <script>
+      function signfun()
+      {
+        
+        let b=document.getElementById("pwd").value;
+        if(b=="")
+        {
+          document.getElementById("msg").innerHTML="password can not be empty";
+          return false;
+        }
+        else if(b.length < 5)
+        {
+          document.getElementById("msg").innerHTML="password contains more than 5 charactor";
+         return false;
+        }
+        else if(b.length > 25)
+        {
+          document.getElementById("msg").innerHTML="password contains less than 25 characters";
+         return false;
+        }
+     
+        let username = document.getElementById("username").value;
+        let validator = /\W/;
+        if(validator.test(username.value) || username.length<5 || username.length>25 ){
+          alert("uername can only contain letters numbers and underscore between 5 to 25 characters");
+        }
+      }
+      
+    </script>
+    
+    <script>
+      function logfun()
+      {
+        let a=document.getElementById("password").value;
+        if(a=="")
+        {
+          document.getElementById("message").innerHTML="password can not be empty";
+          return false;
+        }
+        else if(a.length < 5)
+        {
+          document.getElementById("message").innerHTML="password contains more than 5 charactor";
+         return false;
+        }
+        else if(a.length > 25)
+
+        {
+          document.getElementById("message").innerHTML="password contains less than 25 charactor";
+         return false;
+        }
+     
+        
+      }
+      
+    </script>
+    
+  </body>
+</html>

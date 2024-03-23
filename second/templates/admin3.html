@@ -1,0 +1,47 @@
+{%load static%}
+{%include 'adminheader.html'%}
+  <!-- /.row -->
+  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  {% include 'adminsidebar.html'%}
+  <!-- Button trigger modal -->
+
+
+  <div class="content-header">
+    <h1>SIGN IN DETAILS</h1>
+  <div class="card col-12">
+    <div class="card-body">
+        <table id="example1" class="table">
+            <thead>
+                <tr>
+                    <td><b>id</b></td>
+                    <td><b>username</b></td>
+                    <td><b>Email</b></td>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               {%for i in signin%}
+                <tr>
+                   <td>{{i.id}}</td>
+                    <td>{{i.username}}</td>
+                    <td>{{i.email}}</td>
+                   
+                </tr>
+                {%endfor%} 
+            </tbody>
+        </table>
+    </div>
+  </div>
+  
+  <!-- /.content-header -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  {%include 'adminfooter.html'%}

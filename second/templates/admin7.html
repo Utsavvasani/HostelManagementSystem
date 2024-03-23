@@ -1,0 +1,160 @@
+
+                {%load static%}
+                {%include 'adminheader.html'%}
+                  <!-- /.row -->
+                  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+                  {% include 'adminsidebar.html'%}
+                  <!-- Button trigger modal -->
+                
+                
+                  <div class="content-header">
+                   
+                  </div>
+                  <div class="card col-500">
+                    <div class="card-body">
+                      <a href="/admin/room_details/"><button type="button" class="btn btn-primary">
+                        GET ROOM DETAILS
+                      </button></a>
+                    
+                    <!--room-->
+                    <script>
+                      let utsav=0;
+                      let meet=0;
+                      let shreyansh=0;
+                      let vinit=0;
+                    </script>
+                    <br><br>
+                    <!--room-->
+                    {%for i in mon%}
+                    <div class="main">
+                      <h3>Room-{{i.room}}</h3>
+                      <div class="room">
+                        
+                      <div class="utsav"></div>
+                      <div class="meet"></div>
+                      <script>
+                        
+                        utsav=document.querySelector(".utsav")
+                        if ("{{i.first}}"!="NULL")
+                        {
+                          utsav.innerHTML=`<div class="booked" style="background:red;"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/booked.png' %}" class="image">
+                          </div>`
+
+                        }
+                        else{
+                          utsav.innerHTML=`<div class="notbooked" style="background:rgb(145, 148, 196);"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/empty.png' %}" class="image">
+                          </div>`
+                        }
+                        meet=document.querySelector(".meet")
+                        if ("{{i.second}}"!="NULL")
+                        {
+                          
+                          meet.innerHTML=`<div class="booked" style="background:red;"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/booked.png' %}" class="image">
+                          </div>`
+                        }
+                        else{
+                          meet.innerHTML=`<div class="notbooked" style="background:rgb(145, 148, 196);"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/empty.png' %}" class="image">
+                          </div>`
+                        }
+                      </script>
+                     
+                        
+                      </div>
+                      <div class="room">
+                        <div class="vinit"></div>
+                        <div class="shreyansh"></div>
+                        <script>
+                          vinit=document.querySelector(".vinit")
+                        if ("{{i.third}}"!="NULL")
+                        {
+                          
+                          vinit.innerHTML=`<div class="booked" style="background:red;" onmouseover="" onmouseout="" >  
+                            <img src="{%static 'dist/img/booked.png' %}" class="image">
+                          </div>`
+                        }
+                        else{
+                            vinit.innerHTML=`<div class="notbooked" style="background:rgb(145, 148, 196);"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/empty.png' %}" class="image">
+                          </div>`
+                        }
+                        shreyansh=document.querySelector(".shreyansh")
+                        if ("{{i.fourth}}"!="NULL")
+                        {
+                          
+                          shreyansh.innerHTML=`<div class="booked" style="background:red;"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/booked.png' %}" class="image">
+                          </div>`
+                        }
+                        else{
+                          shreyansh.innerHTML=`<div class="notbooked" style="background:rgb(145, 148, 196);"onmouseover="" onmouseout="">  
+                            <img src="{%static 'dist/img/empty.png' %}" class="image">
+                          </div>`
+                        }
+                      </script>
+                      </div>      
+                    </div>
+      {%endfor%}              
+                   
+                     <!--room-->
+                    {%for i in room%}
+                      <a href="/admin/show_status/{{ i.id }}" style="margin-bottom:10px;">
+                        <button type="submit" class="btn btn-success"  style="margin:25px;">
+                        <b>Room-{{i.room}}</b>
+                      </button></a>
+                    {%endfor%}
+                    
+                    <!--room-->           
+            </div>
+                    </div>
+                  </div>
+                  
+                  <!-- /.content-header -->
+                </div>
+                <!-- /.content-wrapper -->
+                
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                  <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
+                <!-- Button trigger modal -->
+                
+                
+                <!-- Modal -->
+
+               
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">ADD COURSE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method = "post" action="/admin/addroom/" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Room Number:</label>
+            <input type="textarea" class="form-control" id="room" name="room" required>
+          </div>
+          
+         
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-success"></input>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--upload-->
+        <!-- Main Footer -->
+                  {%include 'adminfooter.html'%}

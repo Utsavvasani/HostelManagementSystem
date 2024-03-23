@@ -1,0 +1,36 @@
+.main
+{
+    width:100%;border: 1px solid white;float: left;border-radius:8px 35px;
+}
+.room
+{
+    margin: 10px;float:left;width:45%;
+}
+.notbooked
+{
+    transition: transform 0.5s;
+    width:45%; float:left;margin: 10px;float:left;background:green;width:45%;border-radius: 10px;
+}
+.booked
+{   transition: transform 0.5s;
+    width:45%; float:left;margin: 10px;float:left;background:green;width:45%;border-radius: 10px;
+}
+
+.booked:hover
+{
+    transform: scale(1.1);
+    cursor: pointer; 
+    display: block;
+      
+}
+.image{
+ 
+    height:100px;
+    width:100px;
+}
+
+.notbooked:hover
+{
+    transform: scale(1.1);
+    cursor: pointer;
+}

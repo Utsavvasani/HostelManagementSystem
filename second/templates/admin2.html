@@ -1,0 +1,210 @@
+{%load static%}
+{%include 'adminheader.html'%}
+  <!-- /.row -->
+  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  {% include 'adminsidebar.html'%}
+  <!-- Button trigger modal -->
+
+
+  <div class="content-header">
+   
+  </div>
+  <div class="card col-12">
+    <div class="card-body">
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        ADD
+      </button>
+      
+        <table id="example1" class="table">
+            <thead>
+                <tr>
+                    <td><b>id</b></td>
+                    <td><b>course_name</b></td>
+                    <td><b>Photo</b></td>
+                    <td><b>Price</b></td>
+                    <td><b>Number_of_enrolled</b></td>
+                    <td><b>number_of_message</b></td>
+                    <td><b>description</b></td>
+                    <td><b>date</b></td>
+                    <td><b>Edit</b></td>
+                    <td><b>Delete</b></td>
+                </tr>
+            </thead>
+            <tbody>
+              {%for i in course%}
+                <tr>
+                   <td>{{i.id}}</td>
+                    <td>{{i.name}}</td>
+                    <td><img src="{{i.image.url}}" height="100px" width="100px"></td>
+
+                    <td>{{i.price}}</td>
+
+                    <td>{{i.number_of_enrolled}}</td>
+
+                    <td>{{i.number_of_message}}</td>
+
+                    <td>{{i.description}}</td>
+
+                    <td>{{i.date}}</td>
+
+                    <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticcackdrop{{i.id}}"><i class="nav-icon fas fa-edit"></i>edit</button></td>
+
+                    <td><a href="/admin/delete/{{ i.id }}"><button class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i>delete</button></a></td>
+
+
+                </tr>
+               <!--edit-->
+<div class="modal fade" id="staticcackdrop{{i.id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">UPDATE COURSE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method = "post" action="/admin/update/{{ i.id }}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="disabledTextInput">COURSE ID :{{i.id}}</label>
+            </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{i.name}}" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">price</label>
+            <input type="number" class="form-control" id="price" name="price" value="{{i.price}}" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">number_of_enrolled</label>
+            <input type="number" class="form-control" id="enrolled" name="enrolled" value="{{i.number_of_enrolled}}" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">number_of_message</label>
+            <input type="number" class="form-control" id="message" name="message" value="{{i.number_of_message}}" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Description</label>
+            <input type="textarea" class="form-control" id="description" name="description" value="{{i.description}}" required>
+            
+          </div>
+         
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-success" value="update"></input>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+                {%endfor%} 
+            </tbody>
+        </table>
+    </div>
+  </div>
+  
+  <!-- /.content-header -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">ADD COURSE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method = "post" action="/admin/add/" enctype="multipart/form-data">
+          {% csrf_token %}
+          
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" name="image" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">price</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">number_of_enrolled</label>
+            <input type="number" class="form-control" id="enrolled" name="enrolled" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">number_of_message</label>
+            <input type="number" class="form-control" id="message" name="message" required>
+            
+          </div>
+          <div class="col-md-10">
+            <label for="validationCustom03" class="form-label">Description</label>
+            <input type="textarea" class="form-control" id="description" name="description" required>
+            
+          </div>
+         
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-success"></input>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--upload-->
+
+<div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">UPLOAD CSV FILE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form method="post" action="/admin/upload_csv1/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-10">
+          <label for="validationCustom03" class="form-label">UPLOAD CSV</label>
+          <input type="file" class="form-control" id="file" name="file">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Main Footer -->
+  {%include 'adminfooter.html'%}

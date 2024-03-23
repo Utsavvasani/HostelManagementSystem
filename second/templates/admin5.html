@@ -1,0 +1,148 @@
+
+                {%load static%}
+                {%include 'adminheader.html'%}
+                  <!-- /.row -->
+                  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+                  {% include 'adminsidebar.html'%}
+                  <!-- Button trigger modal -->
+                
+                
+                  <div class="content-header">
+                   
+                  </div>
+                  <div class="card col-12">
+                    <h1>TRUSTEE DETAILS</h1>
+                    <div class="card-body">
+                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        ADD
+                      </button>
+                      
+                        <table id="example1" class="table">
+                            <thead>
+                                <tr>
+                                    <td><b>id</b></td>
+                                    <td><b>Photo</b></td>
+                                    <td><b>Name</b></td>
+                                    <td><b>Native place</b></td>
+                                    <td><b>date</b></td>
+                                    <td><b>Edit</b></td>
+                                    <td><b>Delete</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {%for i in trustee%}
+                                <tr>
+                                   <td>{{i.id}}</td>
+                                    <td><img src="{{i.image.url}}" height="100px" width="100px"></td>
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.Native}}</td>
+                
+                                    <td>{{i.date}}</td>
+                
+                                    <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdropp{{i.id}}"><i class="nav-icon fas fa-edit"></i>edit
+                                    </button>
+                                      
+                                    <td><a href="/admin/deleteTrustee/{{ i.id }}"><button class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i>delete</button></a></td>
+                
+                
+                                </tr>
+                                <!--edit-->
+                <div class="modal fade" id="staticBackdropp{{i.id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">UPDATE DETAILS</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method = "post" action="/admin/updateTrustee/{{i.id}}" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <label for="disabledTextInput">IMAGE ID :{{i.id}}</label>
+                            </div>
+                          
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                            
+                          </div>
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Name</label>
+                            <input type="textarea" class="form-control" id="name" name="name" value="{{i.name}}" required>
+                            
+                          </div>
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Native Place</label>
+                            <input type="textarea" class="form-control" id="native" name="native" value="{{i.Native}}" required>
+                            
+                          </div>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-success" value="update"></input>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                                {%endfor%} 
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                  
+                  <!-- /.content-header -->
+                </div>
+                <!-- /.content-wrapper -->
+                
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                  <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
+                <!-- Button trigger modal -->
+                
+                
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">ADD DETAILS</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method = "post" action="/admin/addTrustee/" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          
+                          
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image" required>
+                            
+                          </div>
+                          
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Name</label>
+                            <input type="textarea" class="form-control" id="name" name="name" value="{{i.name}}" required>
+                            
+                          </div>
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Native Place</label>
+                            <input type="textarea" class="form-control" id="native" name="native" value="{{i.native}}" required>
+                            
+                          </div>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-success"></input>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+                 <!-- Main Footer -->
+                  {%include 'adminfooter.html'%}

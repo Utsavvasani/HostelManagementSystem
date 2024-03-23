@@ -1,0 +1,62 @@
+{%load static%}
+{%include 'header.html'%}
+<!-- #header -->
+	  
+			<!-- start banner Area -->
+			<section class="banner-area relative about-banner" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Admission				
+							</h1>	
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="contact.html">Admission</a></p>
+						</div>	
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->				  
+
+			<!-- Start contact-page Area -->
+			<section class="contact-page-area section-gap">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-lg-8">
+							<form class="form-area contact-form text-left" id="myForm" action="mail.php" method="post">
+								<div class="row">	
+									<div class="col-lg-8 form-group">
+										<label>First Name:</label><input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
+                                        <label>Father name:</label><input name="name" placeholder="Enter your father name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
+                                        <label>Surname:</label><input name="name" placeholder="Enter your surname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your surname'" class="common-input mb-20 form-control" required="" type="text">
+                                        <label>cast:</label><select name="subcaste" class="form-control" required="">
+                                            <option value="LEUVA">LEUVA</option>
+                                            <option value="KADVA">KADVA</option>
+                                          </select>
+                                         
+                                            <label>Gender :</label>
+                                            <select name="gender" class="form-control" required="">
+                                              <option value="MALE">MALE</option>
+                                              <option value="FEMALE">FEMALE</option>
+                                            </select>
+                                        <label>Native Place:</label><input name="native" placeholder="Enter your native place" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your native place'" class="common-input mb-20 form-control" required="" type="text">
+                                        <label>Birth date:</label><input name="birth" placeholder="Enter your birth date" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your birth date'" class="common-input mb-20 form-control" required="" type="date">
+                                        <label>Result of 12:</label><input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
+                                        <label>Email:</label><input type="email" name="email" class="form-control mobile" placeholder="" data-rule="mobile:10" required="">
+                                        <label>Mobile number:</label><input type="number" name="mobile" class="form-control mobile" placeholder="" data-rule="mobile:10" data-msg="Please enter a valid mobile number of 10 digits" required="">
+									</div>
+									<div class="col-lg-8">
+										<div class="alert-msg" style="text-align: left;"></div>
+										<button class="genric-btn primary" style="float: right;">Send Message</button>											
+									</div>
+								</div>
+							</form>	
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End contact-page Area -->
+
+			<!-- start footer Area -->		
+			{%include "footer.html"%}

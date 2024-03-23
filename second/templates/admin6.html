@@ -1,0 +1,168 @@
+
+                {%load static%}
+                {%include 'adminheader.html'%}
+                  <!-- /.row -->
+                  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+                  {% include 'adminsidebar.html'%}
+                  <!-- Button trigger modal -->
+                
+                
+                  <div class="content-header">
+                   
+                  </div>
+                  <div class="card col-12">
+                    <div class="card-body">
+                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        ADD
+                      </button>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#upload">
+                        UPLOAD CSV
+                      </button>
+                     <a href="/admin/downloadAmenities/"> <button type="button" class="btn btn-primary">
+                        DOWNLOAD CSV
+                      </button></a>
+                        <table id="example1" class="table">
+                            <thead>
+                                <tr>
+                                    <td><b>id</b></td>
+                                    <td><b>title</b></td>
+                                    <td><b>description</b></td>
+                                    <td><b>Edit</b></td>
+                                    <td><b>Delete</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {%for i in amenities%}
+                                <tr>
+                                   <td>{{i.id}}</td>
+                                   <td>{{i.title}}</td>
+                                    <td>{{i.description}}</td>
+                
+                                  
+                
+                                    <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdropp{{i.id}}"><i class="nav-icon fas fa-edit"></i>edit
+                                    </button>
+                                      
+                                    <td><a href="/admin/deleteAmenities/{{ i.id }}"><button class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i>delete</button></a></td>
+                
+                
+                                </tr>
+                                <!--edit-->
+                <div class="modal fade" id="staticBackdropp{{i.id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">UPDATE IMAGE</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method = "post" action="/admin/updateAmenities/{{i.id}}" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <label for="disabledTextInput">Amenities Id :{{i.id}}</label>
+                            </div>
+                            <div class="col-md-10">
+                              <label for="validationCustom03" class="form-label">Title</label>
+                              <input type="textarea" class="form-control" id="title" name="title" value="{{i.title}}" required>
+                              
+                            </div>
+                         
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Description</label>
+                            <input type="textarea" class="form-control" id="description" name="description" value="{{i.description}}" required>
+                            
+                          </div>
+                         
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-success" value="update"></input>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                                {%endfor%} 
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                  
+                  <!-- /.content-header -->
+                </div>
+                <!-- /.content-wrapper -->
+                
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                  <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
+                <!-- Button trigger modal -->
+                
+                
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">ADD IMAGE</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method = "post" action="/admin/addAmenities/" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          
+                            
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Title</label>
+                            <input type="textarea" class="form-control" id="title" name="title" required>
+                            
+                          </div>
+                         
+                          
+                          
+                          <div class="col-md-10">
+                            <label for="validationCustom03" class="form-label">Description</label>
+                            <input type="textarea" class="form-control" id="description" name="description" required>
+                            
+                          </div>
+                         
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-success"></input>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!--upload csv-->
+
+<div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">UPLOAD CSV FILE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form method="post" action="/admin/UploadCsvAmenities/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-10">
+          <label for="validationCustom03" class="form-label">UPLOAD CSV</label>
+          <input type="file" class="form-control" id="file" name="file">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+                 <!-- Main Footer -->
+                  {%include 'adminfooter.html'%}

@@ -1,0 +1,66 @@
+{%load static%}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="{% static '1.css'%}" rel="stylesheet">
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{%static 'kelavnidham.png' %}" id="icon">
+      <br>
+      <br>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" onsubmit="return logfun()">
+      {%csrf_token%}
+      <label>Enter Username:</label>
+      <input type="text" id="username" class="fadeIn second" name="username" >
+      <label>Enter Password:</label>
+      <input type="text" id="password" class="fadeIn third" name="password" >
+      <i name="message" id="message" style="color:red;"></i>
+      <br>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+      
+    </form>
+    <div class="signup-link">Are you a member of hostel? <a href="\hostel_login">login with phone number</a></div>
+
+    <div class="signup-link">Not a member? <a href="\signup">Signup now</a></div>
+
+  </div>
+</div>
+<script>
+  function logfun()
+  {
+    let a=document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let validator = /\W/;
+    if(validator.test(username.value) || username.length<5 || username.length>25 ){
+      alert("uername can only contain letters numbers and underscore between 5 to 25 characters");
+    }
+    
+    if(a=="")
+    {
+      document.getElementById("message").innerHTML="password can not be empty";
+      return false;
+    }
+    else if(a.length < 5)
+    {
+      document.getElementById("message").innerHTML="password contains more than 5 charactor";
+     return false;
+    }
+    else if(a.length > 25)
+
+    {
+      document.getElementById("message").innerHTML="password contains less than 25 charactor";
+     return false;
+    }
+    
+  }
+  
+</script>
